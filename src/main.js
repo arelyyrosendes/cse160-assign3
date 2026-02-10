@@ -48,7 +48,7 @@ gl.clearColor(0, 0, 0, 1);
 const camera = new Camera(canvas);
 const world = new World(gl, program);
 
-// ---------- Texture loading (FROM FILESYSTEM) ----------
+// ---------- Texture loading ----------
 function initTextures() {
   const tex0 = gl.createTexture();
   const tex1 = gl.createTexture();
@@ -60,11 +60,8 @@ function initTextures() {
   const checkDone = () => {
     loaded++;
     if (loaded === 2) {
-      // tell shader which texture units correspond to samplers
       gl.uniform1i(u_Sampler0, 0);
       gl.uniform1i(u_Sampler1, 1);
-
-      // start rendering ONLY after textures load
       requestAnimationFrame(tick);
     }
   };
@@ -72,9 +69,9 @@ function initTextures() {
   img0.onload = () => { loadTexture(tex0, img0, 0); checkDone(); };
   img1.onload = () => { loadTexture(tex1, img1, 1); checkDone(); };
 
-  // IMPORTANT: paths are relative to index.html (project root)
-  img0.src = "assets/minecraft-dirt.png"; // unit 0
-  img1.src = "assets/wall.png";          // unit 1
+
+  img0.src = "assets/minecraft-dirt.png"; 
+  img1.src = "assets/wall.png";          
 }
 
 function loadTexture(texture, image, unit) {
@@ -99,7 +96,6 @@ document.addEventListener("keydown", (e) => {
   const k = e.key.toLowerCase();
   keys.add(k);
 
-  // Minecraft add/remove
   if (k === "f") {
     const { x, z } = camera.cellInFront(1.2);
     world.addBlock(x, z);
@@ -112,7 +108,6 @@ document.addEventListener("keydown", (e) => {
 
 document.addEventListener("keyup", (e) => keys.delete(e.key.toLowerCase()));
 
-// Pointer lock mouse look
 canvas.addEventListener("click", () => canvas.requestPointerLock());
 
 document.addEventListener("mousemove", (e) => {
@@ -145,5 +140,4 @@ function tick() {
   requestAnimationFrame(tick);
 }
 
-// Start by loading textures (then tick() starts automatically)
 initTextures();

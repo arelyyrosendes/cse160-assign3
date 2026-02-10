@@ -9,7 +9,7 @@ export class Camera {
     this.up  = new Vec3(0, 1, 0);
 
     this.yaw = 0;
-    this.pitch = -5;   // slight downward tilt so ground is visible
+    this.pitch = -5;  
 
 
     this.view = new Mat4();
@@ -40,7 +40,7 @@ export class Camera {
 
 
     this._forward.set(fx, fy, fz).normalize();
-    this._right = Vec3.cross(this._forward, this.up).normalize(); // right-handed
+    this._right = Vec3.cross(this._forward, this.up).normalize();
   }
 
   updateView() {
@@ -63,7 +63,7 @@ export class Camera {
   moveLeft()     { this.eye.sub(this._right.copy().mul(this.speed)); }
   moveRight()    { this.eye.add(this._right.copy().mul(this.speed)); }
 
-  // For Minecraft add/remove: cell in front of camera (x,z)
+
   cellInFront(dist=1.2) {
     const p = this.eye.copy().add(this._forward.copy().mul(dist));
     return { x: Math.floor(p.x), z: Math.floor(p.z) };

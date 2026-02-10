@@ -9,10 +9,8 @@ export class World {
     this.size = 32;
     this.maxH = 4;
 
-    // 0..4 heights
     this.map = this.makeMap();
 
-    // reusable cube
     this.cube = new Cube(gl, program);
   }
 
@@ -26,7 +24,7 @@ export class World {
       map[i][0] = 4; map[i][N - 1] = 4;
     }
 
-    // Some corridors/rooms (hardcoded, editable)
+    // Some corridors/rooms
     for (let x = 3; x < 29; x++) map[8][x] = 2;
     for (let z = 10; z < 27; z++) map[z][12] = 3;
     for (let x = 10; x < 22; x++) map[18][x] = 1;
@@ -66,7 +64,7 @@ export class World {
 
     c.baseColor = [1, 1, 1, 1];
     c.texWeight = 1.0;
-    c.whichTex = 0; // ✅ dirt texture (minecraft-dirt.png)
+    c.whichTex = 0;
     c.render();
   }
 
@@ -78,7 +76,7 @@ export class World {
       .scale(200, 200, 200);
 
     c.baseColor = [0.35, 0.55, 0.95, 1.0];
-    c.texWeight = 0.0; // ✅ solid color sky
+    c.texWeight = 0.0;
     c.whichTex = 0;
     c.render();
   }
@@ -96,7 +94,7 @@ export class World {
 
           c.baseColor = [1, 1, 1, 1];
           c.texWeight = 1.0;
-          c.whichTex = 1; // ✅ wall texture (wall.png)
+          c.whichTex = 1;
           c.render();
         }
       }

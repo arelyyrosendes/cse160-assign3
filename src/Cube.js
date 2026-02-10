@@ -1,9 +1,5 @@
 import { Mat4 } from "./math.js";
 
-/**
- * A unit cube centered at origin, spanning [-0.5..0.5] on each axis
- * 36 vertices (6 faces * 2 triangles * 3 verts), each with UV.
- */
 export class Cube {
   constructor(gl, program) {
     this.gl = gl;
