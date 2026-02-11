@@ -3,17 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CSE 160 Assignment 4 - Voxel World</title>
+  <title>Assignment 3 - Voxel World</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- HUD -->
   <div class="hud">
     <div class="hud__title">Voxel World</div>
-    <div class="hud__text">
-      Click canvas to lock mouse • WASD move • Q/E turn • Mouse look<br/>
-      F = add block • R = remove block • Esc = unlock mouse
-    </div>
+  <div class="hud__text">
+    Click canvas to lock mouse • WASD move • Q/E turn • Mouse look<br/>
+    F = add block • R = remove block
   </div>
+
+  <div class="hud__story">
+    <strong>Goal:</strong> Collect all relics and reach the glowing portal to escape.
+  </div>
+
+
+    <div class="hud__row">
+      <div class="pill" id="hudPos">pos: (0.0, 0.0, 0.0)</div>
+      <div class="pill" id="hudFPS">fps: --</div>
+      <div class="pill" id="hudRelics">relics: 0/5</div>
+    </div>
+
+    <div class="hud__message" id="hudMsg"></div>
+  </div>
+
+  <!-- Crosshair -->
+  <div class="crosshair" aria-hidden="true"></div>
 
   <canvas id="webgl" width="900" height="600"></canvas>
 

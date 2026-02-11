@@ -16,8 +16,9 @@ html, body {
   position: fixed;
   left: 12px;
   top: 12px;
+  width: min(520px, calc(100vw - 24px));
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: rgba(0,0,0,0.55);
   color: rgba(255,255,255,0.9);
   border: 1px solid rgba(255,255,255,0.12);
@@ -25,7 +26,7 @@ html, body {
 }
 
 .hud__title {
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.2px;
   margin-bottom: 6px;
 }
@@ -34,4 +35,56 @@ html, body {
   font-size: 12px;
   line-height: 1.35;
   opacity: 0.9;
+}
+
+.hud__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+.hud__message {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  min-height: 18px;
+  color: rgba(255,255,255,0.92);
+}
+
+.crosshair {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(255,255,255,0.9);
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+}
+
+.crosshair::before { width: 2px; height: 18px; }
+.crosshair::after  { width: 18px; height: 2px; }
+
+@media (max-width: 520px) {
+  #webgl { width: 100vw; height: auto; }
 }
